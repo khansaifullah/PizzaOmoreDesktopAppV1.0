@@ -86,19 +86,17 @@ public class takeInputs extends JFrame {
 
     public void setBranches(){
         //setting Branches
-        branchesList.addItem("Branch 1");
-        branchesList.addItem("Branch 2");
-        branchesList.addItem("Branch 3");
 
-          //  HTTP GET Call to get Branches
-//                    httpHelper = new HttpHelper();
-//                    try {
-//                        httpHelper.getBranches();
-//
-//                    }catch (Exception ex){
-//                        System.out.println("Exception :"+ ex.toString());
-//
-//                    }
+        String [] branchNames =  ResourceProvider.branchNames;
+        if(branchNames!=null){
+            for(int i =0;i<branchNames.length;i++){
+                branchesList.addItem(branchNames[i]);
+            }
+        }
+        else{
+            System.out.print("No Branch Names Found");
+        }
+
     }
 
 

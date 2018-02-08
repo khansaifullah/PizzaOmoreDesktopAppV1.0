@@ -19,5 +19,15 @@
     <orderEntry type="library" name="apache-httpcomponents-httpclient" level="project" />
     <orderEntry type="library" name="apache-httpcomponents-httpcore" level="project" />
     <orderEntry type="library" name="commons-logging-1.2" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/json-jena-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="jackson-all-1.9.0" level="project" />
   </component>
 </module>

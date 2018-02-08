@@ -74,7 +74,7 @@ public class Printsupport  {
 
     public Object[][] getTableData (JTable table) {
         int itemcount=table.getRowCount();
-        System.out.println("Item Count:"+itemcount);
+        System.out.println("Order Item Count:"+itemcount);
 
         TableModel dtm = table.getModel();
         //DefaultTableModel dtm = (DefaultTableModel) table.getModel();
@@ -167,21 +167,28 @@ public class Printsupport  {
                     int imagewidth=100;
                     int imageheight=50;
                    // BufferedImage read = ImageIO.read(getClass().getResource("com.PrintUtility.image/logo.png"));
-                    g2d.drawImage(new BufferedImage(1,1,1) ,x,y,imagewidth,imageheight,null);         //draw com.PrintUtility.image
+
+                    //g2d.drawImage(new BufferedImage(1,1,1) ,x,y,imagewidth,imageheight,null);         //draw com.PrintUtility.image
+
                     //g2d.drawImage(read,x,y,imagewidth,imageheight,null);         //draw com.PrintUtility.image
-                    g2d.drawLine(10, y+60, 180, y+60);                          //draw line
+                   // g2d.drawLine(10, y+60, 180, y+60);                          //draw line
                     // IF Buffered Image is used Then use IOException
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try{
 	        /*Draw Header*/
-                    int y=80;
+                    int y=20;
+                    int nextLine=10;
+                    //int y=80
                     g2d.drawString("Pizza Omore", 40,y);
-                    g2d.drawString("CopyWrite 2017-2018", 50,y+10);                 //shift a line by adding 10 to y value
+                    g2d.drawString("Branch Name", 40,y+10);     //shift a line by adding 10 to y value
+                    //g2d.drawString("03333443665", 40,y);
+                   // g2d.drawString("Branch Name", 50,y+10);                 //shift a line by adding 10 to y value
                     g2d.drawString(now(), 10, y+20);                                //print date
-                    g2d.drawString("Cashier : admin", 10, y+30);
-
+                    g2d.drawString("Order No.: 00001", 10, y+30);
+                    g2d.drawLine(10, y + 60, 180, y + 60);
+                   // g2d.drawString("Delivery Address", 40,y);
 	              /*Draw Colums*/
                     g2d.drawLine(10, y+40, 180, y+40);
                     g2d.drawString(title[0], 10 ,y+50);
@@ -214,7 +221,7 @@ public class Printsupport  {
 	                /*Footer*/
                     font = new Font("Arial",Font.BOLD,10) ;                  //changed font size
                     g2d.setFont(font);
-                    g2d.drawString("Thank You!",30, cH+10);
+                    g2d.drawString("Thank You!",50, cH+20);
                     //end of the reciept
                 }
                 catch(Exception r){

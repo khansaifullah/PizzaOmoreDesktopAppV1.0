@@ -5,52 +5,45 @@ package com.PrintUtility;
  */
 public class OrderItem {
 
-    private int id;
-    private String name;
-    private int price;
-    private int quantity;
+    //private int id;
+    private String item_name;
+    private int item_price;
+    private int qty;
+    public OrderItem(){
 
-
-    public OrderItem(int _id,String _name,int _price ,int _quantity){
-        id=_id;
-        name=_name;
-        price=_price;
-        quantity=_quantity;
     }
-    @Override
-     public String  toString(){
-    return name+"   quantity "+quantity+"   price "+price ;
-     }
-
-    public int getId() {
-        return id;
+    public OrderItem(String item_name, int item_price, int qty) {
+        this.item_name = item_name;
+        this.item_price = item_price;
+        this.qty = qty;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String  toString(){
+        return "Item name : "+item_name+" item_price : "+item_price;
+
+    }
+    public String getItem_name() {
+        return item_name;
     }
 
-    public String getName() {
-        return name;
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getItem_price() {
+        return item_price;
     }
 
-    public int getPrice() {
-        return price;
+    public void setItem_price(int item_price) {
+        this.item_price = item_price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public int getQty() {
+        return qty;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 }
+

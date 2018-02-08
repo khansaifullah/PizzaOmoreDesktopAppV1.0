@@ -49,10 +49,11 @@ public class ConfirmInstallation extends JFrame {
     }
 
     public static void main(String[] args) {
-
+        System.out.println("Working Directory = " +
+                System.getProperty("user.dir"));
         Boolean isConfigured;
         FileIOHelper fileIOHelper=new FileIOHelper();
-
+        ResourceProvider resourceProvider= new ResourceProvider();
         try{
             isConfigured= fileIOHelper.chkIfConfigured();
 

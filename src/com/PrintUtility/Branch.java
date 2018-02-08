@@ -7,27 +7,23 @@ public class Branch {
 
     private int id;
     private String title;
-    private String address;
-    private String post_box;
+    private String phone_number_1;
 
     public Branch() {
     }
 
-    public Branch(int id, String title, String address, String post_box) {
+    public Branch(int id, String title,  String phone_number_1) {
         this.id = id;
         this.title = title;
-        this.address = address;
-        this.post_box = post_box;
-    }
+        this.phone_number_1=phone_number_1;
 
+    }
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getTitle() {
         return title;
     }
@@ -36,19 +32,11 @@ public class Branch {
         this.title = title;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPhone_number_1() {
+        return phone_number_1;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPost_box() {
-        return post_box;
-    }
-
-    public void setPost_box(String post_box) {
-        this.post_box = post_box;
+    public void setPhone_number_1(String phone_number_1) {
+        this.phone_number_1 = phone_number_1;
     }
 }

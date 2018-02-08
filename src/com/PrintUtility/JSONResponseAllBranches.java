@@ -3,11 +3,20 @@ package com.PrintUtility;
 /**
  * Created by DELL on 1/30/2018.
  */
-public class JSONResponse  {
+public class JSONResponseAllBranches {
 
     private String status;
     private String message;
-    private Object[] objects;
+    private Branch[] object;
+
+
+    public Branch[] getObject() {
+        return object;
+    }
+
+    public void setObject(Branch[] object) {
+        this.object = object;
+    }
 
     public String getStatus() {
         return status;
@@ -25,13 +34,7 @@ public class JSONResponse  {
         this.message = message;
     }
 
-    public Object[] getObjects() {
-        return objects;
-    }
 
-    public void setObjects(Object[] objects) {
-        this.objects = objects;
-    }
 
 
 }

@@ -1,6 +1,7 @@
 package com.PrintUtility;
 
 import java.io.*;
+import java.net.URL;
 
 /**
  * Created by DELL on 1/31/2018.
@@ -23,10 +24,13 @@ public class FileIOHelper {
 //            }
 //        }
 //    }
-    public static void writeData(String data) throws IOException {
+    public  void writeData(String data) throws IOException {
 
         System.out.println("Writing data in file :"+data);
-        File fout = new File("config.txt");
+       // FileOutputStream fos= new FileOutputStream(getClass().("config1.txt"));
+        String filePath= System.getProperty("user.dir")+"\\src\\com\\PrintUtility\\config1.txt";
+        System.out.println("filePath: "+ filePath);
+        File fout = new File(filePath);
         FileOutputStream fos = new FileOutputStream(fout, true);
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
@@ -60,11 +64,19 @@ public class FileIOHelper {
 }
 
 
-    public static Boolean chkIfConfigured() throws IOException {
+    public  Boolean chkIfConfigured() throws IOException {
         BufferedReader reader = null;
+        File file;
         try {
-            File file = new File("config.txt");
-            reader = new BufferedReader(new FileReader(file));
+
+            //ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            //URL url = classLoader.getResource("com/PrintUtility/config1.txt");
+
+         //   file = new File(url.toURI().getPath());
+
+            // file = new File("config.txt");
+            reader=new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("config1.txt")));
+            //reader = new BufferedReader(new FileReader(file));
             String line=reader.readLine();
 
             if (line!=null){
@@ -89,7 +101,7 @@ public class FileIOHelper {
 //                 return false;
 //             }
         }
-        catch(IOException e){
+        catch(Exception e){
             e.printStackTrace();
             return false;
         }
