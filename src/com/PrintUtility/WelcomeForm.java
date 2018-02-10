@@ -22,7 +22,7 @@ public class WelcomeForm extends JFrame {
     JFrame frame = new JFrame("Pizza Omore");
     public HttpHelper httpHelper;
     public  Printsupport ps;
-    JList ordersJList;
+    JList pendingOrdersJList;
     DefaultListModel<Order> orderDefaultListModel;
     Order [] ordersList;
     SoundUtils soundUtils;
@@ -39,15 +39,13 @@ public class WelcomeForm extends JFrame {
 //            ordersList[i]=new Order();
 //            orderDefaultListModel.addElement(ordersList[i]);
 //        }
-        ordersJList= new JList<Order>(orderDefaultListModel);
+        pendingOrdersJList= new JList<Order>(orderDefaultListModel);
 
 //        ordersJList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 //        ordersJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        ordersJList.setVisibleRowCount(1);
-//        ordersJList.setCellRenderer(new MyCellRenderer());
+        //ordersJList.setVisibleRowCount(1);
+       // pendingOrdersJList.setCellRenderer(new MyCellRenderer());
 
-        scrollPane = new JScrollPane(ordersJList);
-        //scrollPane.setPreferredSize(new Dimension(250, 150));
         frame.setContentPane(WelcomePanel);
         JPanel jp1 = new JPanel();
         JPanel jp2 = new JPanel();
@@ -57,7 +55,8 @@ public class WelcomeForm extends JFrame {
         label2.setText("Delivered Orders List");
 
         jp1.add(label1);
-        jp1.add(ordersJList);
+        jp1.add(pendingOrdersJList);
+        //jp1.setPreferredSize(new Dimension(500, 50));
         jp2.add(label2);
 
         tabbedPane1.addTab("<html><h2 style='padding:3px; background-color:#ba1610;color:white; '>Pending Orders</h2></html>", jp1);
@@ -78,20 +77,23 @@ public class WelcomeForm extends JFrame {
 
                // Toolkit.getDefaultToolkit().beep();
                 //Check Pending Orders
+
                 try{
                     ordersList=httpHelper.getPendingOrders("7");
                     if (ordersList.length>0){
                         System.out.println("Pending Order Count  :" + ordersList.length);
                         orderDefaultListModel.clear();
 
+
                         for (int i =0; i<ordersList.length;i++){
                             System.out.println("in Loop");
-                                    // orderItemList[i]=new OrderItem(1,"1",1,1);
-                                    //ordersList[i]=new Order();
                             orderDefaultListModel.addElement(ordersList[i]);
+                            //ListCellRenderer renderer = pendingOrdersJList.getCellRenderer();
+                           // pendingOrdersJList = getSelectedList();
+                            pendingOrdersJList.setCellRenderer(new OrdersCellRenderer());
                         }
-                        ordersJList= new JList<Order>(orderDefaultListModel);
-                        jp1.add(ordersJList);
+                       // pendingOrdersJList= new JList<Order>(orderDefaultListModel);
+                       // jp1.add(pendingOrdersJList);
                        // scrollPane = new JScrollPane(ordersJList);
                     }
                 }

@@ -9,28 +9,29 @@
       <background color="-5040115"/>
       <font size="16" style="1"/>
     </properties>
-    <border type="none" title="">
-      <font/>
+    <border type="none" title-justification="2">
+      <font name="Adobe Caslon Pro Bold" size="20" style="1"/>
+      <title-color color="-131073"/>
     </border>
     <children>
       <component id="cde21" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
+          <grid row="0" column="3" row-span="1" col-span="3" vsize-policy="3" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="162" height="70"/>
           </grid>
         </constraints>
         <properties>
           <background color="-14760984"/>
           <enabled value="true"/>
-          <font name="Adobe Caslon Pro Bold" size="22" style="1"/>
+          <font name="Adobe Caslon Pro Bold" size="24" style="1"/>
           <foreground color="-131073"/>
           <horizontalTextPosition value="0"/>
-          <text value="PIZZA OMORE"/>
+          <text value="   PIZZA OMORE"/>
         </properties>
       </component>
       <scrollpane id="6c0fc" binding="scrollPane">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="5" vsize-policy="4" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="6" vsize-policy="4" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-131073"/>
@@ -52,24 +53,18 @@
             <clientProperties>
               <html.disable class="java.lang.Boolean" value="false"/>
             </clientProperties>
-            <border type="none">
-              <font size="16"/>
-              <title-color color="-1"/>
+            <border type="none" title="Orders List" title-justification="2">
+              <font size="16" style="1"/>
+              <title-color color="-5366753"/>
               <color color="-16777216"/>
             </border>
             <children/>
           </tabbedpane>
         </children>
       </scrollpane>
-      <component id="a213f" class="javax.swing.JToolBar$Separator">
-        <constraints>
-          <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
       <component id="232f5" class="javax.swing.JToolBar$Separator">
         <constraints>
-          <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
@@ -79,34 +74,54 @@
         </constraints>
         <properties/>
       </component>
-      <component id="abeae" class="javax.swing.JButton" binding="printBtn">
-        <constraints>
-          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="62" height="55"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font style="1"/>
-          <text value="Print"/>
-        </properties>
-      </component>
       <component id="354c6" class="javax.swing.JButton" binding="chkOrder">
         <constraints>
-          <grid row="1" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="101" height="55"/>
+          <grid row="1" column="5" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="60" height="50"/>
           </grid>
         </constraints>
         <properties>
           <font style="1"/>
-          <text value="Check Orders"/>
+          <foreground color="-5366753"/>
+          <horizontalTextPosition value="0"/>
+          <icon value="com/PrintUtility/refresh1.png"/>
+          <text value="REFRESH"/>
+          <verticalTextPosition value="3"/>
         </properties>
       </component>
       <component id="c8565" class="javax.swing.JButton" binding="SettingBtn">
         <constraints>
-          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font style="1"/>
+          <foreground color="-5366753"/>
           <text value="Settings"/>
+        </properties>
+      </component>
+      <component id="abeae" class="javax.swing.JButton" binding="printBtn">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="60" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font style="1"/>
+          <foreground color="-5366753"/>
+          <horizontalTextPosition value="0"/>
+          <icon value="com/PrintUtility/print3.png"/>
+          <text value="PRINT"/>
+          <verticalAlignment value="0"/>
+          <verticalTextPosition value="3"/>
+        </properties>
+      </component>
+      <component id="ee152" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="2" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <icon value="com/PrintUtility/PizaomoreLogo.png"/>
+          <text value=""/>
         </properties>
       </component>
     </children>

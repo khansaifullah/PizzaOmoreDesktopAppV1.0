@@ -31,10 +31,16 @@ public class ResourceProvider {
     }
 
     public void setAllBranchNames() {
-         branchNames= new String[branches.length];
-        for(int i =0; i < branchNames.length;i++){
-            branchNames[i]=branches[i].getTitle();
+        if (branches!=null){
+            branchNames= new String[branches.length];
+            for(int i =0; i < branchNames.length;i++){
+                branchNames[i]=branches[i].getTitle();
+            }
         }
+        else {
+            branchNames=null;
+        }
+
         //return branchNames;
     }
 
