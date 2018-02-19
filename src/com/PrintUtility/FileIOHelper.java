@@ -66,7 +66,7 @@ public class FileIOHelper {
 
     public  Boolean chkIfConfigured() throws IOException {
         BufferedReader reader = null;
-        File file;
+        //File file;
         try {
 
             //ClassLoader classLoader = Thread.currentThread().getContextClassLoader();

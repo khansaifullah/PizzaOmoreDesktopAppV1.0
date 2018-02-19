@@ -4,9 +4,7 @@ package com.PrintUtility;
  * Created by DELL on 1/23/2018.
  */
 
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
@@ -40,16 +38,29 @@ public class Printsupport  {
     static JTable itemsTable;
     public static  int total_item_count=0;
     public static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss a";
-    public  static String title[] = new String[] {"Item ID","Item Name","Price","Quantity"};
+    public  static String title[] = new String[] {"Qty","Item Description","Price"};
+    public String customerName;
+    public String customerAddress;
+    public String customerCity;
+    public String customerPostCode;
+    public String customerPhoneNo;
 
-    public static void setItems(Object[][] printitem){
+
+    public  void setItems(Object[][] printitem, String name, String address, String city, String postCode, String phoneNo){
+        //Setting Print Data
         Object data[][]=printitem;
+        this.customerName=name;
+        this.customerAddress=address;
+        this.customerCity=city;
+        this.customerPostCode=postCode;
+        this.customerPhoneNo=phoneNo;
+
         DefaultTableModel model = new DefaultTableModel();
         //assume jtable has 4 columns.
         model.addColumn(title[0]);
         model.addColumn(title[1]);
         model.addColumn(title[2]);
-        model.addColumn(title[3]);
+       // model.addColumn(title[3]);
 
 
         int rowcount=printitem.length;
@@ -150,7 +161,12 @@ public class Printsupport  {
                 double width = pageFormat.getImageableWidth();
                 double height = pageFormat.getImageableHeight();
                 g2d.translate((int) pageFormat.getImageableX(),(int) pageFormat.getImageableY());
-                Font font = new Font("Monospaced",Font.PLAIN,7);
+                Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{2}, 0);
+
+                g2d.setStroke(dashed);
+
+                //Font font = new Font("Monospaced",Font.PLAIN,7);
+                Font font = new Font("Arial",Font.BOLD,15) ;                  //changed font size For Pizza Omore Heading
                 g2d.setFont(font);
 
 
@@ -181,21 +197,47 @@ public class Printsupport  {
                     int y=20;
                     int nextLine=10;
                     //int y=80
-                    g2d.drawString("Pizza Omore", 40,y);
-                    g2d.drawString("Branch Name", 40,y+10);     //shift a line by adding 10 to y value
+                    g2d.drawString("PIZZA OMORE", 30,y);
+                    font = new Font("Arial",Font.PLAIN,10); // Change Font
+                    g2d.setFont(font);
+                    g2d.drawString("Branch Name", 50,y+10);     //shift a line by adding 10 to y value
                     //g2d.drawString("03333443665", 40,y);
                    // g2d.drawString("Branch Name", 50,y+10);                 //shift a line by adding 10 to y value
-                    g2d.drawString(now(), 10, y+20);                                //print date
-                    g2d.drawString("Order No.: 00001", 10, y+30);
-                    g2d.drawLine(10, y + 60, 180, y + 60);
+                   // g2d.drawString(now(), 10, y+20);                                //print date
+                    g2d.drawString("tel:03347773337", 40, y + 20);
+                    g2d.drawLine(10, y + 30, 180, y + 30);
+                    font = new Font("Arial",Font.BOLD,12); // Change Font
+                    g2d.setFont(font);
+                    g2d.drawString("Delivery", 50, y + 40);
+                    font = new Font("Arial",Font.BOLD,11); // Change Font
+                    g2d.setFont(font);
+                    g2d.drawString("Due 09-Feb At ASAP 18:00", 20, y + 50);
+                    g2d.drawString("Order Number: 0010", 20, y + 60);
+                    font = new Font("Arial",Font.PLAIN,10); // Change Font
+                    g2d.setFont(font);
+                    g2d.drawLine(10, y + 70, 180, y + 70);
+                    g2d.drawString("Notes:", 10, y + 80);
+                    font = new Font("Arial",Font.BOLD,10); // Change Font
+                    g2d.setFont(font);
+                    g2d.drawString("Some Notice Here...", 10, y + 90);
+                    g2d.drawString("Continued...", 10, y + 100);
+                    //g2d.drawString("Continued...", 10, y + 110);
+                    font = new Font("Arial",Font.PLAIN,10); // Change Font
+                    g2d.setFont(font);
+                    g2d.drawLine(10, y + 120, 180, y + 120);
+
+                    //g2d.drawString("Order No.: 00001", 10, y+30);
+                   // g2d.drawLine(10, y + 60, 180, y + 60);
                    // g2d.drawString("Delivery Address", 40,y);
 	              /*Draw Colums*/
-                    g2d.drawLine(10, y+40, 180, y+40);
+                   // g2d.drawLine(10, y + 40, 180, y + 40);
+
+                    y=y+100;
                     g2d.drawString(title[0], 10 ,y+50);
                     g2d.drawString(title[1], 50 ,y+50);
-                    g2d.drawString(title[2], 100 ,y+50);
-                    g2d.drawString(title[3], 150 ,y+50);
-                    g2d.drawLine(10, y+60, 180, y+60);
+                    g2d.drawString(title[2], 150 ,y+50);
+                   // g2d.drawString(title[3], 150 ,y+50);
+                    //g2d.drawLine(10, y+60, 180, y+60);
 
                     int cH = 0;
                     TableModel mod = itemsTable.getModel();
@@ -204,24 +246,29 @@ public class Printsupport  {
 	                	/*Assume that all parameters are in string data type for this situation
                                  * All other premetive data types are accepted.
                                 */
-                        String itemid = mod.getValueAt(i, 0).toString();
+                        String quantity = mod.getValueAt(i, 0).toString();
                         String itemname = mod.getValueAt(i, 1).toString();
                         String price = mod.getValueAt(i, 2).toString();
-                        String quantity = mod.getValueAt(i, 3).toString();
+                        //String quantity = mod.getValueAt(i, 3).toString();
 
                         cH = (y+70) + (10*i);                             //shifting drawing line
 
-                        g2d.drawString(itemid, 0, cH);
+                        g2d.drawString(quantity, 10, cH);
                         g2d.drawString(itemname,50, cH);
-                        g2d.drawString(price , 100, cH);
-                        g2d.drawString(quantity , 150, cH);
+                        g2d.drawString(price , 150, cH);
+                      //  g2d.drawString(quantity , 150, cH);
 
                     }
 
-	                /*Footer*/
-                    font = new Font("Arial",Font.BOLD,10) ;                  //changed font size
+                    g2d.drawLine(10, cH+10, 180, cH + 10);
+                    font = new Font("Arial",Font.BOLD,13) ;                  //changed font size
                     g2d.setFont(font);
-                    g2d.drawString("Thank You!",50, cH+20);
+                    g2d.drawString("ORDER NOT PAID", 40, cH + 30);
+                    font = new Font("Arial",Font.PLAIN,10); // Change Font
+                    g2d.setFont(font);
+                    g2d.drawLine(10, cH + 40, 180, cH + 40);
+                    g2d.drawString("Customer Details :", 0, cH + 50);
+
                     //end of the reciept
                 }
                 catch(Exception r){

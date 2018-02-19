@@ -35,7 +35,7 @@ public class Order {
     }
 
     public String  toString(){
-        return "    Order Details           Order Id  : "+order_id+" Customer Name : "+customer_name;
+            return "   Order Id  : "+order_id+"                               "+customer_name+"                     "+ order_price;
 
     }
     public int getOrder_id() {

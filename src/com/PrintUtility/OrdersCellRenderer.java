@@ -5,11 +5,7 @@ package com.PrintUtility;
  */
 import java.awt.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
+import javax.swing.*;
 
 import javax.swing.border.Border;
 
@@ -18,9 +14,13 @@ public class OrdersCellRenderer extends JLabel implements ListCellRenderer<Order
 
    public OrdersCellRenderer()
     {
-        // Leave a 10-pixel separator between the flag icon and country name.
 
-        setIconTextGap(10);
+        //setHorizontalAlignment(SwingConstants.LEFT);
+        //setMinimumSize(new Dimension(1000, 100));
+
+        // Leave a 10-pixel separator between the flag icon and country name.
+        //setIconTextGap(10);
+       // setFont(new Font("Sans Serif", Font.PLAIN, 15));
 
         // Swing labels default to being transparent; the container's color
         // shows through. To change a Swing label's background color, you must
@@ -41,14 +41,13 @@ public class OrdersCellRenderer extends JLabel implements ListCellRenderer<Order
                                                   boolean isSelected,
                                                   boolean cellHasFocus)
     {
-        //setUndecorated(true);
-        //setExtendedState(JFrame.MAXIMIZED_BOTH);
-       // setSize(1000,50);
-        //setMinimumSize(new Dimension(1000,100));
-       // setMinimumSize(new Dimension(1000,100));
-        //setPreferedSize(new Dimension(1000,100));
-        //setMaximumSize(new Dimension(1000,100));
-        setText("Order Id :     "+order.getOrder_id() + " Customer Name:  " + order.getCustomer_name() + " Order Status:  " + "Pending");
+
+
+        setText("Order id:"+order.getOrder_id()+"                           " +
+                "    "+order.getCustomer_name()+"                               " +
+                "  "+ order.getOrder_price());
+        //setForeground(Color.blue);
+        //setText("Order Id :     "+order.getOrder_id() + " Customer Name:  " + order.getCustomer_name() + " Order Status:  " + "Pending");
         //8setIcon(order.getFlagIcon());
 
         if (isSelected)

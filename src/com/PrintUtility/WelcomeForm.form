@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.PrintUtility.WelcomeForm">
-  <grid id="27dc6" binding="WelcomePanel" layout-manager="GridLayoutManager" row-count="4" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="WelcomePanel" layout-manager="GridLayoutManager" row-count="4" column-count="15" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="14" y="14" width="624" height="416"/>
+      <xy x="14" y="14" width="694" height="416"/>
     </constraints>
     <properties>
       <background color="-5040115"/>
@@ -14,24 +14,9 @@
       <title-color color="-131073"/>
     </border>
     <children>
-      <component id="cde21" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="3" row-span="1" col-span="3" vsize-policy="3" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="162" height="70"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-14760984"/>
-          <enabled value="true"/>
-          <font name="Adobe Caslon Pro Bold" size="24" style="1"/>
-          <foreground color="-131073"/>
-          <horizontalTextPosition value="0"/>
-          <text value="   PIZZA OMORE"/>
-        </properties>
-      </component>
       <scrollpane id="6c0fc" binding="scrollPane">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="6" vsize-policy="4" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="13" vsize-policy="4" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-131073"/>
@@ -64,7 +49,7 @@
       </scrollpane>
       <component id="232f5" class="javax.swing.JToolBar$Separator">
         <constraints>
-          <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
@@ -76,52 +61,84 @@
       </component>
       <component id="354c6" class="javax.swing.JButton" binding="chkOrder">
         <constraints>
-          <grid row="1" column="5" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="60" height="50"/>
+          <grid row="1" column="12" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="50" height="50"/>
           </grid>
         </constraints>
         <properties>
           <font style="1"/>
           <foreground color="-5366753"/>
           <horizontalTextPosition value="0"/>
-          <icon value="com/PrintUtility/refresh1.png"/>
-          <text value="REFRESH"/>
+          <icon value="com/PrintUtility/refresh1.1.png"/>
+          <text value="Refresh"/>
+          <toolTipText value="Check Pending Orders"/>
           <verticalTextPosition value="3"/>
         </properties>
       </component>
       <component id="c8565" class="javax.swing.JButton" binding="SettingBtn">
         <constraints>
-          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-5366753"/>
           <font style="1"/>
           <foreground color="-5366753"/>
-          <text value="Settings"/>
+          <hideActionText value="false"/>
+          <horizontalTextPosition value="0"/>
+          <icon value="com/PrintUtility/setting1.png"/>
+          <text value=""/>
+          <toolTipText value="Settings"/>
         </properties>
       </component>
       <component id="abeae" class="javax.swing.JButton" binding="printBtn">
         <constraints>
-          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="60" height="50"/>
+          <grid row="1" column="11" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="50" height="50"/>
           </grid>
         </constraints>
         <properties>
           <font style="1"/>
           <foreground color="-5366753"/>
           <horizontalTextPosition value="0"/>
-          <icon value="com/PrintUtility/print3.png"/>
-          <text value="PRINT"/>
+          <icon value="com/PrintUtility/print3.1.png"/>
+          <text value="Print"/>
+          <toolTipText value="Select an Order from List and Print"/>
           <verticalAlignment value="0"/>
           <verticalTextPosition value="3"/>
         </properties>
       </component>
+      <component id="cde21" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="7" vsize-policy="0" hsize-policy="4" anchor="10" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="162" height="70"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-14760984"/>
+          <enabled value="true"/>
+          <font name="Adobe Caslon Pro Bold" size="28" style="1"/>
+          <foreground color="-8863"/>
+          <horizontalTextPosition value="0"/>
+          <text value="   PIZZA OMORE"/>
+        </properties>
+      </component>
       <component id="ee152" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="2" use-parent-layout="false"/>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="2" use-parent-layout="false"/>
         </constraints>
         <properties>
           <icon value="com/PrintUtility/PizaomoreLogo.png"/>
           <text value=""/>
+        </properties>
+      </component>
+      <component id="49f76" class="javax.swing.JLabel" binding="loadingLabel">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="16" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Loading..."/>
         </properties>
       </component>
     </children>

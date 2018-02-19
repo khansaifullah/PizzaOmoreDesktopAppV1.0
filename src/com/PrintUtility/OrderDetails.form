@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.PrintUtility.OrderDetails">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="872" height="677"/>
+    </constraints>
+    <properties>
+      <background color="-5040115"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <splitpane id="ce0d5" binding="jSplitPane">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <dividerLocation value="279"/>
+          <dividerSize value="1"/>
+        </properties>
+        <border type="empty"/>
+        <children>
+          <grid id="3c43b" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <splitpane position="left"/>
+            </constraints>
+            <properties>
+              <background color="-1586766"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="a12d9" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <background color="-1586766"/>
+                  <font size="16" style="1"/>
+                  <foreground color="-16777216"/>
+                  <horizontalAlignment value="0"/>
+                  <text value="AN ORDER NEEDS YOUR ATTENTION"/>
+                </properties>
+              </component>
+              <scrollpane id="42475">
+                <constraints border-constraint="South"/>
+                <properties>
+                  <preferredSize width="10" height="300"/>
+                </properties>
+                <border type="none" title="QTY                                   ITEM                                                   PRICE" title-justification="4" title-position="2">
+                  <font size="12" style="1"/>
+                </border>
+                <children>
+                  <component id="19946" class="javax.swing.JTextArea" binding="orderItemList">
+                    <constraints/>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="2d3cc" class="javax.swing.JTextArea" binding="orderTimeDetails">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <font size="12" style="1"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="32ba3" layout-manager="GridBagLayout">
+            <constraints>
+              <splitpane position="right"/>
+            </constraints>
+            <properties>
+              <background color="-1586766"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="8e0c9" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="18" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="9d7e" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="de376" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="4e79" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="445f5" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="ca403" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="17" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="6bf5a" class="javax.swing.JButton" binding="REQTIMEButton" default-binding="true">
+                <constraints>
+                  <grid row="2" column="0" row-span="4" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-15033293"/>
+                  <text value="REQ. TIME"/>
+                </properties>
+              </component>
+              <component id="fc490" class="javax.swing.JButton" binding="a45MINButton" default-binding="true">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-15033293"/>
+                  <text value="  45   MIN  "/>
+                </properties>
+              </component>
+              <component id="28326" class="javax.swing.JButton" binding="a60MINButton" default-binding="true">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-15033293"/>
+                  <text value="  60   MIN  "/>
+                </properties>
+              </component>
+              <component id="6a8c5" class="javax.swing.JButton" binding="a75MINButton" default-binding="true">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-15033293"/>
+                  <text value="  75   MIN  "/>
+                </properties>
+              </component>
+              <component id="e66e" class="javax.swing.JButton" binding="a90MINButton" default-binding="true">
+                <constraints>
+                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-15033293"/>
+                  <text value="  90   MIN  "/>
+                </properties>
+              </component>
+              <component id="f34a6" class="javax.swing.JButton" binding="rejectBtn">
+                <constraints>
+                  <grid row="0" column="2" row-span="3" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.5" weighty="0.0" ipadx="80" ipady="40"/>
+                </constraints>
+                <properties>
+                  <background color="-1824499"/>
+                  <font size="18" style="1"/>
+                  <foreground color="-131073"/>
+                  <text value="REJECT"/>
+                </properties>
+              </component>
+              <component id="ca90d" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="7ab8d" class="javax.swing.JButton" binding="NODRIVERButton" default-binding="true">
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-1824499"/>
+                  <text value="NO DRIVER"/>
+                </properties>
+              </component>
+              <component id="9ada1" class="javax.swing.JButton" binding="NOFOODButton" default-binding="true">
+                <constraints>
+                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-1824499"/>
+                  <text value=" NO FOOD "/>
+                </properties>
+              </component>
+              <component id="3ad11" class="javax.swing.JButton" binding="TOOBUSYButton" default-binding="true">
+                <constraints>
+                  <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-1824499"/>
+                  <text value="TOO BUSY"/>
+                </properties>
+              </component>
+              <component id="3e5f3" class="javax.swing.JButton" binding="CLOSEButton" default-binding="true">
+                <constraints>
+                  <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <background color="-131073"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-1824499"/>
+                  <text value="   CLOSE   "/>
+                </properties>
+              </component>
+              <component id="410ff" class="javax.swing.JButton" binding="OTHERButton" default-binding="true">
+                <constraints>
+                  <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="60" ipady="30"/>
+                </constraints>
+                <properties>
+                  <font size="14" style="1"/>
+                  <foreground color="-1824499"/>
+                  <text value="   OTHER   "/>
+                </properties>
+              </component>
+              <component id="b141c" class="javax.swing.JButton" binding="accpetBtn">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.5" weighty="0.0" ipadx="80" ipady="40"/>
+                </constraints>
+                <properties>
+                  <background color="-15033293"/>
+                  <font size="18" style="1"/>
+                  <foreground color="-131073"/>
+                  <text value="ACCEPT"/>
+                </properties>
+              </component>
+              <component id="b63ef" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <vspacer id="2e265">
+                <constraints>
+                  <grid row="4" column="1" row-span="9" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+              </vspacer>
+              <component id="3bb76" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="f7c6e" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="227bc" class="javax.swing.JToolBar$Separator">
+                <constraints>
+                  <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </splitpane>
+      <component id="e949e" class="javax.swing.JButton" binding="backToOrdersListButton" default-binding="true">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-5040115"/>
+          <font size="14" style="1"/>
+          <foreground color="-1"/>
+          <horizontalAlignment value="2"/>
+          <icon value="com/PrintUtility/back.png"/>
+          <text value="Back To Orders List"/>
+        </properties>
+        <clientProperties>
+          <hideActionText class="java.lang.Boolean" value="false"/>
+        </clientProperties>
+      </component>
+    </children>
+  </grid>
+</form>

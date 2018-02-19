@@ -1,11 +1,14 @@
 package com.PrintUtility;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.print.*;
+import java.io.InputStream;
 
 /**
  * Created by DELL on 1/23/2018.
@@ -15,10 +18,12 @@ public class WelcomeForm extends JFrame {
 
     private JButton chkOrder;
     private JPanel WelcomePanel;
+    private JPanel orderDetailsPanel;
     private JTabbedPane tabbedPane1;
     private JScrollPane scrollPane;
     private JButton printBtn;
     private JButton SettingBtn;
+    private JLabel loadingLabel;
     JFrame frame = new JFrame("Pizza Omore");
     public HttpHelper httpHelper;
     public  Printsupport ps;
@@ -28,39 +33,98 @@ public class WelcomeForm extends JFrame {
     SoundUtils soundUtils;
 
     public WelcomeForm() {
-
+        loadingLabel.setVisible(true);
+       // tabbedPane1.add(loadingLabel);
         soundUtils=new SoundUtils();
         httpHelper=new HttpHelper();
         orderDefaultListModel = new DefaultListModel();
-        //ordersList= new Order[0];
-//        System.out.println("Items In Order  :" + ordersList.length);
-//        for (int i =0; i<ordersList.length;i++){
-//            // orderItemList[i]=new OrderItem(1,"1",1,1);
-//            ordersList[i]=new Order();
-//            orderDefaultListModel.addElement(ordersList[i]);
-//        }
         pendingOrdersJList= new JList<Order>(orderDefaultListModel);
+        pendingOrdersJList.setFont(new Font("Sans Serif", Font.BOLD, 17));
+        pendingOrdersJList.setFixedCellHeight(50);
+        pendingOrdersJList.setFixedCellWidth(1200);
 
-//        ordersJList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-//        ordersJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        //ordersJList.setVisibleRowCount(1);
-       // pendingOrdersJList.setCellRenderer(new MyCellRenderer());
+        new SwingWorker<Void, String>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                // Worken hard or hardly worken...
+                try {
+                    ordersList = httpHelper.getPendingOrders("7");
+                    if (ordersList.length > 0) {
+                        System.out.println("Pending Order Count  :" + ordersList.length);
+                        orderDefaultListModel.clear();
+
+
+                        for (int i = 0; i < ordersList.length; i++) {
+                            System.out.println("in Loop");
+                            orderDefaultListModel.addElement(ordersList[i]);
+                            //ListCellRenderer renderer = pendingOrdersJList.getCellRenderer();
+                            // pendingOrdersJList = getSelectedList();
+                            pendingOrdersJList.setCellRenderer(new OrdersCellRenderer());
+                        }
+                        // pendingOrdersJList= new JList<Order>(orderDefaultListModel);
+                        // jp1.add(pendingOrdersJList);
+                        // scrollPane = new JScrollPane(ordersJList);
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(frame, "Please Check Your Internet Connection! ");
+                    System.out.println("Exception Occurred While Fetching Pending Orders " + ex);
+                }
+
+
+                //Thread.sleep(1000);
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                loadingLabel.setVisible(false);
+            }
+        }.execute();
+
 
         frame.setContentPane(WelcomePanel);
         JPanel jp1 = new JPanel();
         JPanel jp2 = new JPanel();
         JLabel label1 = new JLabel();
-        label1.setText("Pending Orders List");
+        //label1.setText("Pending Orders List");
         JLabel label2 = new JLabel();
-        label2.setText("Delivered Orders List");
+        label2.setText("In Process Orders List");
 
-        jp1.add(label1);
+        //jp1.add(new JLabel("Name", JLabel.CENTER));
+        //jp1.add(new JLabel("Time",JLabel.LEFT));
+        jp1.add(loadingLabel);
+
+        // constructs the table
+//        String[] columnNames = new String[] {"Title", "Author", "Publisher", "Published Date", "Pages", "Rating"};
+//        String[][] rowData = new String[][] {
+//                {"Effective Java", "Joshua Bloch", "Addision-Wesley", "May 08th 2008", "346", "5"},
+//                {"Thinking in Java", "Bruce Eckel", "Prentice Hall", "Feb 26th 2006", "1150", "4"},
+//                {"Head First Java", "Kathy Sierra & Bert Bates", "O'Reilly Media", "Feb 09th 2005", "688", "4.5"},
+//        };
+//
+//        JTable table = new JTable(rowData, columnNames);
+//        table.getTableHeader().setDefaultRenderer(new SimpleHeaderRenderer());
+//
+//
+
         jp1.add(pendingOrdersJList);
         //jp1.setPreferredSize(new Dimension(500, 50));
         jp2.add(label2);
 
-        tabbedPane1.addTab("<html><h2 style='padding:3px; background-color:#ba1610;color:white; '>Pending Orders</h2></html>", jp1);
-        tabbedPane1.addTab("<html><h2 style='padding:3px; background-color:#ba1610;color:white'>Orders Done</h2></html>", jp2);
+        tabbedPane1.addTab("<html><h2 style='padding:3px; color:#ba1610; '>Pending Orders</h2></html>", jp1);
+        tabbedPane1.addTab("<html><h2 style='padding:3px; color:#ba1610'>In Process</h2></html>", jp2);
+       // reader=new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("config1.txt")));
+
+        try{
+            InputStream is = getClass().getClassLoader().getResourceAsStream("PizaomoreIcon.png");
+            ImageIO.read(is);
+            //reader=new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("config1.txt")));
+            //getClass().getResource();
+            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("icon.png")));
+            //frame.setIconImage(Toolkit.getDefaultToolkit().getImage());
+            } catch(Exception ex){
+            System.out.println("Exception While Loading Icon Image " + ex);
+        }
 
         frame.setSize(900, 700);
         frame.setTitle("Pizza Omore");
@@ -75,34 +139,31 @@ public class WelcomeForm extends JFrame {
 //
 //                }
 
-               // Toolkit.getDefaultToolkit().beep();
+                // Toolkit.getDefaultToolkit().beep();
                 //Check Pending Orders
 
-                try{
-                    ordersList=httpHelper.getPendingOrders("7");
-                    if (ordersList.length>0){
+                try {
+                    ordersList = httpHelper.getPendingOrders("7");
+                    if (ordersList.length > 0) {
                         System.out.println("Pending Order Count  :" + ordersList.length);
                         orderDefaultListModel.clear();
 
 
-                        for (int i =0; i<ordersList.length;i++){
+                        for (int i = 0; i < ordersList.length; i++) {
                             System.out.println("in Loop");
                             orderDefaultListModel.addElement(ordersList[i]);
                             //ListCellRenderer renderer = pendingOrdersJList.getCellRenderer();
-                           // pendingOrdersJList = getSelectedList();
+                            // pendingOrdersJList = getSelectedList();
                             pendingOrdersJList.setCellRenderer(new OrdersCellRenderer());
                         }
-                       // pendingOrdersJList= new JList<Order>(orderDefaultListModel);
-                       // jp1.add(pendingOrdersJList);
-                       // scrollPane = new JScrollPane(ordersJList);
+                        // pendingOrdersJList= new JList<Order>(orderDefaultListModel);
+                        // jp1.add(pendingOrdersJList);
+                        // scrollPane = new JScrollPane(ordersJList);
                     }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(frame, "Please Check Your Internet Connection! ");
+                    System.out.println("Exception Occurred While Fetching Pending Orders " + ex);
                 }
-                catch(Exception ex){
-                    System.out.println("Exception Occurred While Fetching Pending Orders "+ ex);
-                }
-
-
-
 
 
 /***********************/
@@ -144,7 +205,7 @@ public class WelcomeForm extends JFrame {
 //                catch (PrinterException ex) {
 //                    ex.printStackTrace();
 //                }
-          /**************/
+                /**************/
 
             }
         });
@@ -153,54 +214,106 @@ public class WelcomeForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
 
-                //Check Selected List Items & Print It
-//                int selected[] = ordersJList.getSelectedIndices();
-//                System.out.println("Selected Elements:  ");
-//
-//                for (int i = 0; i < selected.length; i++) {
-//                    String element = (String) ordersJList.getModel().getElementAt(
-//                            selected[i]);
-//                    System.out.println("  " + element);
-//                }
+               // Check Selected List Items & Print It
+                int selected[] = pendingOrdersJList.getSelectedIndices();
+                String dataToPrint[][];
+                System.out.println("Selected Elements:  "+selected.length);
 
-/****************/
-                //Print Receipt
-                String data[][]={ {"101","Pizza","11","1"},
-                        {"102","Zinger","22","2"},
-                        {"103","Roll ","33","3"},
-                        {"104","Coca Cola","22","2"},
-                        {"105","Cheese","33","3"}};
+                for (int i = 0; i < selected.length; i++) {
 
-                String column[]={"id","name","price","qty"};
+                    Order order = (Order) pendingOrdersJList.getModel().getElementAt(selected[i]);
+                    System.out.println(" Customer Name: " + order.getCustomer_name());
+                    OrderItem[] orderItems = order.getItems();
+                    if (order!=null){
+                        dataToPrint=new String[orderItems.length][3];
+                        for (int j = 0; j < orderItems.length; j++) {
+                            System.out.println("  " + orderItems[j].getItem_name() + " " + orderItems[j].getItem_price() + " " + orderItems[j].getQty());
+                            dataToPrint[j][0]=orderItems[j].getQty()+"";
+                            dataToPrint[j][1]=orderItems[j].getItem_name();
+                            dataToPrint[j][2]=orderItems[j].getItem_price()+"";
+                        }
+                    }
+                    else {
 
-                JTable jt=new JTable(data,column);
-               // jt.setBounds(30,40,200,300);
+                        System.out.print("No order Item Found");
+                        dataToPrint=new String[0][0];
 
-                ps=new Printsupport();
-                Object printitem [][]=ps.getTableData(jt);
-                ps.setItems(printitem);
+                    }
 
-                PrinterJob pj = PrinterJob.getPrinterJob();
-                pj.setPrintable(new Printsupport.MyPrintable(),ps.getPageFormat(pj));
-                try {
-                    pj.print();
+                    /****************/
+                    //Print Receipt
+                    //Dummy Data for printing
+//                    String data[][] = {{"1", "Pizza", "11"},
+//                            {"12", "Zinger", "22"},
+//                            {"13", "Roll ", "33"},
+//                            {"14", "Coca Cola", "22"},
+//                            {"15", "Cheese", "33"}};
 
+
+                    String column[] = {"Qty", "Item Description", "Price"};
+
+                    JTable jt = new JTable(dataToPrint, column);
+                    // jt.setBounds(30,40,200,300);
+
+                    Book book = new Book();//java.awt.print.Book
+                    ps = new Printsupport();
+                    Object printitem[][] = ps.getTableData(jt);
+                    // Set Items Attribute printitem , customerName,  address,  city,  postCode,  phoneNo
+                    ps.setItems(printitem, order.getCustomer_name(), order.getAddress(), order.getCity(), order.getPost_code(), order.getCustomer_number());
+
+                    //1st finsihes before page ends
+                    PrinterJob pj = PrinterJob.getPrinterJob();
+                     pj.setPrintable(new Printsupport.MyPrintable(), ps.getPageFormat(pj));
+
+                    // 2nd same as first but Tried to join pages
+                    //book.append(new Printsupport.MyPrintable(), ps.getPageFormat(pj));
+                    //pj.setPageable(book);
+
+                    //3rd Joins pages but change position of print
+//                    PageFormat pf = pj.defaultPage();
+//                    Paper paper = pf.getPaper();
+//                    pf.setPaper(paper);
+//                    pj.setPrintable(new Printsupport.MyPrintable(), pf);
+
+
+                    try {
+                        pj.print();
+
+                    } catch (PrinterException ex) {
+                        ex.printStackTrace();
+                    }
+                    /**************/
                 }
-                catch (PrinterException ex) {
-                    ex.printStackTrace();
-                }
-                /**************/
-
-
             }
         });
         SettingBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                takeInputs form = new takeInputs();
-                form.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                form.frame.setVisible(true);
-                frame.setVisible(false);
+
+//                frame.remove(WelcomePanel);
+//                orderDetailsPanel=new JPanel();
+//                orderDetailsPanel.setLayout(new BorderLayout());
+//                orderDetailsPanel.add(new Button("Some Button"));
+//                frame.add(orderDetailsPanel);
+
+//                takeInputs form = new takeInputs();
+//                form.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                form.frame.setVisible(true);
+//                frame.setVisible(false);
+            }
+        });
+
+        pendingOrdersJList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                    OrderDetails orderDetails= new OrderDetails();
+                    orderDetails.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    orderDetails.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    orderDetails.frame.setVisible(true);
+                    frame.setVisible(false);
+
+                }
             }
         });
     }
@@ -210,6 +323,11 @@ public class WelcomeForm extends JFrame {
 
         WelcomeForm welcomeForm= new WelcomeForm();
         welcomeForm.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        welcomeForm.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         welcomeForm.frame.setVisible(true);
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
